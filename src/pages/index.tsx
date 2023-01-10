@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   const initialNum = getRandomNum();
 
   return (
-    <Layout path="/" title="タイトル" noTitleTemplate isTopPage>
+    <Layout>
       <Counter initialNum={initialNum} />
     </Layout>
   );

@@ -17,9 +17,7 @@ class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html lang="ja" dir="ltr">
-        <Head>
-          {/* サイト全体に反映させたいデフォルトの設定を記述する ex) Google Fonts の読み込み */}
-        </Head>
+        <Head></Head>
         <body>
           <Main />
           <NextScript />

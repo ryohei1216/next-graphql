@@ -1,6 +1,6 @@
-import Button from '@/components/common/parts/Button';
-import Container from '@/components/common/parts/Container';
-import useCounter from '@/hooks/useCounter';
+import { useEffect } from 'react';
+
+import { useTodo } from '@/hooks/useTodo';
 
 type CounterProps = {
   initialNum: number;
@@ -8,20 +8,23 @@ type CounterProps = {
 
 const Counter = (props: CounterProps): JSX.Element => {
   const { initialNum } = props;
-  const { count, countUp, countDown } = useCounter(initialNum);
+  const { fetchTodos } = useTodo();
+  useEffect(() => {
+    void fetchTodos('testid');
+  }, [fetchTodos]);
 
   return (
-    <Container className="py-20">
-      <div className="flex items-center space-x-5">
-        <Button className="w-10 md:p-1 md:text-2xl" colorInverse onClick={countDown}>
-          -
-        </Button>
-        <div className="w-20 text-center text-7xl font-bold">{count}</div>
-        <Button className="w-10 md:p-1 md:text-2xl" onClick={countUp}>
-          +
-        </Button>
+    <div className="p-32">
+      <div className="py-2">
+        <p>タイトル</p>
+        <input type="text" className="border border-solid border-gray-300" />
       </div>
-    </Container>
+      <div className="py-2">
+        <p>コンテント</p>
+        <input type="text" className="border border-solid border-gray-300" />
+      </div>
+      <button className="box-border rounded-md bg-gray-300 px-5 ">追加</button>
+    </div>
   );
 };
 
