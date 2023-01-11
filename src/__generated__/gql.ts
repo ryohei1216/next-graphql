@@ -13,6 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
+    "\n  mutation createTodo($newTodo: NewTodo!) {\n    createTodo(input: $newTodo){\n      id\n      text\n      userId\n    }\n}\n": types.CreateTodoDocument,
     "\n  query todos($inputTodos: InputTodos) {\n    todos(input: $inputTodos) {\n      id\n      text\n      userId\n    }\n  }\n": types.TodosDocument,
 };
 
@@ -30,6 +31,10 @@ const documents = {
  */
 export function gql(source: string): unknown;
 
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  mutation createTodo($newTodo: NewTodo!) {\n    createTodo(input: $newTodo){\n      id\n      text\n      userId\n    }\n}\n"): (typeof documents)["\n  mutation createTodo($newTodo: NewTodo!) {\n    createTodo(input: $newTodo){\n      id\n      text\n      userId\n    }\n}\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
