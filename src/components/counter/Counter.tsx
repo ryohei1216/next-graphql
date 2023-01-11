@@ -1,17 +1,10 @@
-import { useEffect } from 'react';
+import { useQuery } from '@apollo/client';
 
-import { useTodo } from '@/hooks/useTodo';
+import { GET_TODOS } from '@/api/queries';
 
-type CounterProps = {
-  initialNum: number;
-};
-
-const Counter = (props: CounterProps): JSX.Element => {
-  const { initialNum } = props;
-  const { fetchTodos } = useTodo();
-  useEffect(() => {
-    void fetchTodos('testid');
-  }, [fetchTodos]);
+const Counter = (): JSX.Element => {
+  const { data } = useQuery(GET_TODOS, { variables: { inputTodos: { userId: 'testid' } } });
+  console.log(data?.todos);
 
   return (
     <div className="p-32">
